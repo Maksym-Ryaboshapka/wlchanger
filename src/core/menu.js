@@ -1,5 +1,5 @@
-import { WALLPAPERS_DIR } from "../constants";
-import getImages from "../utils/fileUtils";
+import { WALLPAPERS_DIR } from "../utils/constants";
+import getImages from "../utils/file";
 
 const getSelectedWallpaper = async (wallpapersDir = WALLPAPERS_DIR) => {
   const wallpaper = await getImages(wallpapersDir);

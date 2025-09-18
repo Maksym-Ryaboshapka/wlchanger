@@ -7,6 +7,7 @@
     "ini": "^5.0.0"
   },
   "scripts": {
+    "start": "bun run src/index.js",
     "compiele": "bun build src/index.js --compile --outfile bin/wlchanger-linux-x64 --target bun-linux-x64"
   }
 }
