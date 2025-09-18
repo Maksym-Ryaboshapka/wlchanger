@@ -1,45 +1,19 @@
-import checkDeps from "./utils/checkDeps";
-import readConfig from "./config/config";
-import getSelectedWallpaper from "./rofi/getSelectedWallpaper";
-import changeWallpaper from "./features/changeWallpaper";
-import { WALLPAPERS_DIR } from "./constants";
+import config from "./config/index";
+import installBin from "./utils/install";
+import getSelectedWallpaper from "./core/menu";
+import changeWallpaper from "./core/wallpaper";
+import { WALLPAPERS_DIR } from "./utils/constants";
 
 const main = async () => {
-  const missing = await checkDeps();
+  installBin();
 
-  if (missing.length > 0) {
-    missing.forEach((pkg) =>
-      console.error(
-        `Error: ${pkg} is not installed. Please install it and try again`
-      )
-    );
-
-    return;
-  }
-
-  let wallpapersDir;
-  let animation;
-  let steps;
-  let fps;
-
-  try {
-    const config = await readConfig();
-    wallpapersDir = config.wallpapersDir;
-    animation = config.animation;
-    steps = config.steps;
-    fps = config.fps;
-  } catch (err) {
-    console.error(err);
-    return;
-  }
-
-  const imageName = await getSelectedWallpaper(wallpapersDir);
+  const imageName = await getSelectedWallpaper();
   await changeWallpaper(
     imageName,
-    wallpapersDir || WALLPAPERS_DIR,
-    animation || "fade",
-    steps || 30,
-    fps || 30
+    config.wallpapersDir || WALLPAPERS_DIR,
+    config.animation || "fade",
+    config.steps || 30,
+    config.fps || 30
   );
 };
 

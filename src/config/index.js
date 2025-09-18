@@ -1,6 +1,6 @@
 import ini from "ini";
 import * as fs from "fs";
-import { HOME_DIR } from "../constants";
+import { HOME_DIR } from "../utils/constants";
 
 const readConfig = async () => {
   const configPath = `${HOME_DIR}/.config/wlchanger/wlchanger.conf`;
@@ -16,4 +16,4 @@ const readConfig = async () => {
   return config;
 };
 
-export default readConfig;
+export default await readConfig();
