@@ -1,4 +1,4 @@
-const DEPS = ["bun", "swww", "rofi"];
+const DEPS = ["swww", "rofi"];
 
 const checkDeps = async () => {
   const missing = [];

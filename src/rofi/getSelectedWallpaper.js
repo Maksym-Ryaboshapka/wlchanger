@@ -1,8 +1,8 @@
 import { WALLPAPERS_DIR } from "../constants";
 import getImages from "../utils/fileUtils";
 
-const getSelectedWallpaper = async () => {
-  const wallpaper = await getImages(WALLPAPERS_DIR);
+const getSelectedWallpaper = async (wallpapersDir = WALLPAPERS_DIR) => {
+  const wallpaper = await getImages(wallpapersDir);
 
   if (wallpaper.length === 0) {
     console.log("No wallpapers found");

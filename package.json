@@ -1,0 +1,9 @@
+{
+  "name": "wlchanger",
+  "module": "src/index.js",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "ini": "^5.0.0"
+  }
+}

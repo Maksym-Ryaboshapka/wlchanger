@@ -1,14 +1,13 @@
-import { WALLPAPERS_DIR } from "../constants";
-
 const changeWallpaper = async (
   imageName,
-  animation = "fade",
-  steps = 30,
-  fps = 30
+  wallpapersDir,
+  animation,
+  steps,
+  fps
 ) => {
   if (!imageName) return;
 
-  const imagePath = `${WALLPAPERS_DIR}/${imageName}`;
+  const imagePath = `${wallpapersDir}/${imageName}`;
 
   try {
     const proc = Bun.spawn([

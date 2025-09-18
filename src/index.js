@@ -1,6 +1,8 @@
 import checkDeps from "./utils/checkDeps";
+import readConfig from "./config/config";
 import getSelectedWallpaper from "./rofi/getSelectedWallpaper";
 import changeWallpaper from "./features/changeWallpaper";
+import { WALLPAPERS_DIR } from "./constants";
 
 const main = async () => {
   const missing = await checkDeps();
@@ -15,8 +17,30 @@ const main = async () => {
     return;
   }
 
-  const imageName = await getSelectedWallpaper();
-  await changeWallpaper(imageName);
+  let wallpapersDir;
+  let animation;
+  let steps;
+  let fps;
+
+  try {
+    const config = await readConfig();
+    wallpapersDir = config.wallpapersDir;
+    animation = config.animation;
+    steps = config.steps;
+    fps = config.fps;
+  } catch (err) {
+    console.error(err);
+    return;
+  }
+
+  const imageName = await getSelectedWallpaper(wallpapersDir);
+  await changeWallpaper(
+    imageName,
+    wallpapersDir || WALLPAPERS_DIR,
+    animation || "fade",
+    steps || 30,
+    fps || 30
+  );
 };
 
 main();
