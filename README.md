@@ -51,7 +51,7 @@ sudo apt install rofi
 
 ### Method 1: Download from Releases (Recommended)
 
-1. **Download** the latest release from the [Releases](https://github.com/Maksym-Ryaboshapka/wlchanger/releases/) page
+1. **Download** the latest release from the [Releases](https://github.com/Maksym-Ryaboshapka/wlchanger/releases) page
 2. **Make executable:**
    ```bash
    chmod +x wlchanger-linux-x64
