@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "bun run src/index.js",
-    "compiele": "bun build src/index.js --compile --outfile bin/wlchanger-linux-x64 --target bun-linux-x64"
+    "compile": "bun build --compile --target=bun-linux-x64 src/index.js --outfile bin/wlchanger-linux-x64",
+    "docker:build": "docker build -t wlchanger . && mkdir -p ./bin && docker rm -f tmp-wlchanger 2>/dev/null || true && docker create --name tmp-wlchanger wlchanger && docker cp tmp-wlchanger:/app/bin/wlchanger-linux-x64 ./bin && docker rm tmp-wlchanger"
   }
 }
