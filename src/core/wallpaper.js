@@ -1,10 +1,10 @@
-const changeWallpaper = async (
+const changeWallpaper = async ({
   imageName,
   wallpapersDir,
   animation,
   steps,
-  fps
-) => {
+  fps,
+}) => {
   if (!imageName) return;
 
   const imagePath = `${wallpapersDir}/${imageName}`;
