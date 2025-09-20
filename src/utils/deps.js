@@ -18,4 +18,4 @@ const checkDeps = async () => {
   return missing;
 };
 
-export default checkDeps;
+export default await checkDeps();
