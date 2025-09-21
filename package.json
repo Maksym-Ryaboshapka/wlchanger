@@ -1,14 +1,21 @@
 {
-  "name": "wlchanger",
-  "module": "src/index.js",
-  "private": true,
+  "name": "wlchanger-ts",
+  "module": "index.ts",
   "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "compile": "bun build --compile --target=bun-linux-x64 src/index.ts --outfile bin/wlchanger-linux-x64",
+    "docker:build": "docker build -t wlchanger . && mkdir -p ./bin && docker rm -f tmp-wlchanger 2>/dev/null || true && docker create --name tmp-wlchanger wlchanger && docker cp tmp-wlchanger:/app/bin/wlchanger-linux-x64 ./bin && docker rm tmp-wlchanger"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/ini": "^4.1.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
   "dependencies": {
     "ini": "^5.0.0"
-  },
-  "scripts": {
-    "start": "bun run src/index.js",
-    "compile": "bun build --compile --target=bun-linux-x64 src/index.js --outfile bin/wlchanger-linux-x64",
-    "docker:build": "docker build -t wlchanger . && mkdir -p ./bin && docker rm -f tmp-wlchanger 2>/dev/null || true && docker create --name tmp-wlchanger wlchanger && docker cp tmp-wlchanger:/app/bin/wlchanger-linux-x64 ./bin && docker rm tmp-wlchanger"
   }
 }

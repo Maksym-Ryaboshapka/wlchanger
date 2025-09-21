@@ -1,12 +1,11 @@
 import missing from "./utils/deps";
 import isSwwwRun from "./utils/proc";
-import config from "./config/index";
 import installBin from "./utils/install";
+import config from "./config/index";
 import getSelectedWallpaper from "./core/menu";
-import changeWallpaper from "./core/wallpaper";
-import { ANIMATION, FPS, STEPS, WALLPAPERS_DIR } from "./utils/constants";
+import changeWallpaper from "./core/changeWallpapers";
 
-const main = async () => {
+const main = async (): Promise<void> => {
   if (missing.length > 0) {
     missing.forEach((pkg) =>
       console.error(
@@ -24,12 +23,12 @@ const main = async () => {
 
   installBin();
 
-  config.wallpapersDir = config.wallpapersDir ? config.wallpapersDir : WALLPAPERS_DIR;
-  config.animation = config.animation ? config.animation : ANIMATION;
-  config.steps = config.steps ? config.steps : STEPS;
-  config.fps = config.fps ? config.fps : FPS;
-
   const imageName = await getSelectedWallpaper(config.wallpapersDir);
+  
+  if (!imageName) {
+    return;
+  }
+
   await changeWallpaper({ imageName, ...config });
 };
 

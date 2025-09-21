@@ -60,7 +60,7 @@ Requirements: [Bun](https://bun.sh) runtime
 $ git clone https://github.com/Maksym-Ryaboshapka/wlchanger.git
 $ cd wlchanger
 $ bun install
-$ npm run compile
+$ bun compile
 $ ./bin/wlchanger-linux-x64
 ```
 
@@ -72,7 +72,7 @@ Requirements: [Bun](https://bun.sh) runtime and Docker
 $ git clone https://github.com/Maksym-Ryaboshapka/wlchanger.git
 $ cd wlchanger
 $ bun install
-$ sudo npm run docker:build
+$ bun docker:build
 $ ./bin/wlchanger-linux-x64
 ```
 
